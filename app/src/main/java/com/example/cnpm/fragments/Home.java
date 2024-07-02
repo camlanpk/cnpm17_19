@@ -41,7 +41,6 @@ public class Home extends Fragment{
     private FirebaseUser user;
     private List<HomeModel> list;
     public static int LIST_SIZE = 0;
-    private List<String> likelist;
 
     public Home() {
         // Required empty public constructor
@@ -59,7 +58,6 @@ public class Home extends Fragment{
         super.onViewCreated(view, savedInstanceState);
 
         init(view);
-        likelist = new ArrayList<>();
 
         list = new ArrayList<>();
         adapter = new HomeAdapter(list, getContext());
@@ -69,12 +67,12 @@ public class Home extends Fragment{
 
         adapter.OnPressed(new HomeAdapter.OnPressed() {
             @Override
-            public void onLiked(int position, String id, String uid, List<String> likeList) {
+            public void onLiked(int position, String id, String uid, List<String> likeList, boolean isChecked) {
                 DocumentReference reference= FirebaseFirestore.getInstance().collection("Users")
                         .document(uid).collection("Post Images")
                         .document(id);
 
-                if(likeList.contains(user.getUid())){
+                if(likeList.contains(user.getUid()) && isChecked){
                     likeList.remove(user.getUid());
                 }
                 else {
