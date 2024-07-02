@@ -56,12 +56,12 @@
         android:id="@+id/linearLayout"
         android:layout_below="@+id/imageview">
 
-        <ImageButton
+        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/likeBtn"
             android:layout_margin="8dp"
-            android:background="@drawable/ic_heart"/>
+            android:button="@drawable/heart_check"/>
 
         <ImageButton
             android:layout_width="wrap_content"
